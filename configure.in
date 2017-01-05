@@ -117,4 +117,6 @@ AC_TYPE_SIGNAL
 AC_FUNC_STAT
 AC_CHECK_FUNCS([alarm gethostbyaddr inet_ntoa memset strdup strftime pcap_findalldevs])
 
+AC_DEFINE_DIR(LOG_DIR, log_dir, [Name of log directory])
+
 AC_OUTPUT(Makefile)

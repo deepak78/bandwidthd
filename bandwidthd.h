@@ -121,6 +121,7 @@ struct config
 	int output_database;
 	char *db_connect_string;
 	char *sensor_id;
+	char *log_dir;
 	};
 
 struct SubnetData
