@@ -28,5 +28,6 @@ meta_refresh			{ return TOKMETAREFRESH; }
 pgsql_connect_string	{ return TOKPGSQLCONNECTSTRING; }
 sqlite_filename         { return TOKSQLITEFILENAME; }
 sensor_id				{ return TOKSENSORID; }
+log_dir          		{ return TOKLOGDIR; }
 .						{ return TOKJUNK; }
 %%

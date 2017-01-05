@@ -74,7 +74,8 @@ typedef u_int16_t uint16_t;
 #define XOFFSET 90L
 #define YOFFSET 45L
 
-#define NR_WORKER_CHILDS 3
+//#define NR_WORKER_CHILDS 3
+#define NR_WORKER_CHILDS 0	//set child process to zero to only allow day process
 
 #define RANGE1 172800.0    	// 2 days
 #define RANGE2 604800.0    	// 7 days
@@ -97,6 +98,8 @@ typedef u_int16_t uint16_t;
 #define CONFIG_METAREFRESH 150
 
 #define PERMIS 1
+
+#define MAX_FILENAME 1024
 
 #define DB_PGSQL 1
 #define DB_SQLITE 2
