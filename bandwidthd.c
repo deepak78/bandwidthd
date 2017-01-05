@@ -1205,7 +1205,7 @@ void RecoverDataFromCDF(void)
 		{
 		//logname1[6] = index[Counter];
 		logname[offset] = index[Counter];
-		if (RCDF_Test(logname1))
+		if (RCDF_Test(logname))
 			break;
 		}
 	
@@ -1214,9 +1214,9 @@ void RecoverDataFromCDF(void)
 		{
 		//logname1[6] = index[Counter];
 		logname[offset] = index[Counter];
-		if ((cdf = fopen(logname1, "rt")))
+		if ((cdf = fopen(logname, "rt")))
 			{
-			syslog(LOG_INFO, "Recovering from %s", logname1);
+			syslog(LOG_INFO, "Recovering from %s", logname);
 			if (First)
 				{
 				RCDF_PositionStream(cdf);
