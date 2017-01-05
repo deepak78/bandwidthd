@@ -255,7 +255,7 @@ int main(int argc, char **argv)
 	config.output_database = FALSE;
 	config.db_connect_string = NULL;
 	config.sensor_id = "unset";  
-	config.log_dir = LOG_DIR;
+	config.log_dir = "/tmp";
 
 	openlog("bandwidthd", LOG_CONS, LOG_DAEMON);
 
