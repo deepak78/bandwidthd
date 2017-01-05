@@ -80,6 +80,8 @@ command:
 	sqlite_filename
 	|
 	sensor_id
+	|
+	log_dir
 	;
 
 subnet:
