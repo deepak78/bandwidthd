@@ -884,10 +884,10 @@ void StoreIPDataInCDF(struct IPData IncData[])
 	FILE *cdf;
 	struct Statistics *Stats;
 	char IPBuffer[50];
-	char logfile[MAX_FILENAME];
-	snprintf(logfile, MAX_FILENAME, "%s/log.%c.0.cdf", config.log_dir, config.tag);
+	//char logfile[MAX_FILENAME];
+	//snprintf(logfile, MAX_FILENAME, "%s/log.%c.0.cdf", config.log_dir, config.tag);
 	
-	//char logfile[] = "log.1.0.cdf";
+	char logfile[] = "bandwidthd.cdf";
 	//logfile[4] = config.tag;
 
    	cdf = fopen(logfile, "at");
@@ -1002,9 +1002,9 @@ void CommitData(time_t timestamp)
 	static int MayGraph = TRUE;
     unsigned int counter;
 	struct stat StatBuf;
-	char logname1[MAX_FILENAME];
-	char logname2[MAX_FILENAME];
-	int offset;
+	//char logname1[MAX_FILENAME];
+	//char logname2[MAX_FILENAME];
+	//int offset;
 	// Set the timestamps
 	for (counter=0; counter < IpCount; counter++)
         IpTable[counter].timestamp = timestamp;
@@ -1020,7 +1020,8 @@ void CommitData(time_t timestamp)
 		//	deal with that right now (Heavy disk io may make us drop packets)
 		StoreIPDataInCDF(IpTable);
 
-		if (RotateLogs >= config.range/RANGE1) // We set this++ on HUP
+/*		No need to rotate the logs
+  		if (RotateLogs >= config.range/RANGE1) // We set this++ on HUP
 			{
 			//logname1[4] = config.tag;
 			//logname2[4] = config.tag;
@@ -1053,7 +1054,7 @@ void CommitData(time_t timestamp)
 			RotateLogs = FALSE;
 			}
 		}
-
+*/
 	if (config.graph)
 		{
 		StoreIPDataInRam(IpTable);
