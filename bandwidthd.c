@@ -884,10 +884,10 @@ void StoreIPDataInCDF(struct IPData IncData[])
 	FILE *cdf;
 	struct Statistics *Stats;
 	char IPBuffer[50];
-	//char logfile[MAX_FILENAME];
-	//snprintf(logfile, MAX_FILENAME, "%s/log.%c.0.cdf", config.log_dir, config.tag);
+	char logfile[MAX_FILENAME];
+	snprintf(logfile, MAX_FILENAME, "%s/bandwidthd.cdf", config.log_dir);
 	
-	char logfile[] = "bandwidthd.cdf";
+	//char logfile[] = "bandwidthd.cdf";
 	//logfile[4] = config.tag;
 
    	cdf = fopen(logfile, "at");
