@@ -1053,8 +1053,9 @@ void CommitData(time_t timestamp)
 			fclose(fopen(logname1, "at")); // Touch file
 			RotateLogs = FALSE;
 			}
-		}
 */
+		}
+
 	if (config.graph)
 		{
 		StoreIPDataInRam(IpTable);
