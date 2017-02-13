@@ -27,7 +27,7 @@ unsigned int IpCount = 0;
 unsigned int SubnetCount = 0;
 time_t IntervalStart;
 time_t ProgramStart;
-int RotateLogs = FALSE;
+unsigned int WRITEDATA = 0;
     
 struct SubnetData SubnetTable[SUBNET_NUM];
 struct IPData IpTable[IP_NUM];
@@ -49,7 +49,14 @@ void signal_handler(int sig)
 		{
 		case SIGHUP:
 			signal(SIGHUP, signal_handler);
-			RotateLogs++;
+
+			if (WRITEDATA > 0)  // Then write out this intervals data and possibly kick off the grapher
+				{
+			        CommitData(time(NULL));
+					IpCount = 0;
+			        WRITEDATA = 0;
+				}
+
 			if (config.tag == '1') 
 				{
 				int i;
@@ -486,14 +493,16 @@ void PacketCallback(u_char *user, const struct pcap_pkthdr *h, const u_char *p)
 
     struct IPData *ptrIPData;
 
-    if (h->ts.tv_sec > IntervalStart + config.interval)  // Then write out this intervals data and possibly kick off the grapher
+ /*   commenting and write only on HUF event
+  	  if (h->ts.tv_sec > IntervalStart + config.interval)  // Then write out this intervals data and possibly kick off the grapher
         {
         GraphIntervalCount++;
         CommitData(IntervalStart+config.interval);
 		IpCount = 0;
         IntervalStart=h->ts.tv_sec;
         }
-
+*/
+    WRITEDATA = 1; //mark it for writing data
     caplen -= IP_Offset;  // We're only measuring ip size, so pull off the ethernet header
     p += IP_Offset; // Move the pointer past the datalink header
 
